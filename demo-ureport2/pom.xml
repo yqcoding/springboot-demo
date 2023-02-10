@@ -4,58 +4,72 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <parent>
-        <groupId>com.yqcoding</groupId>
-        <artifactId>springboot-demo</artifactId>
-        <version>1.0</version>
-    </parent>
-
     <groupId>com.yqcoding</groupId>
     <artifactId>demo-ureport2</artifactId>
     <version>1.0.0</version>
     <name>demo-ureport2</name>
     <description>demo-ureport2</description>
-    <packaging>jar</packaging>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <postgresql.driver.version>42.2.20</postgresql.driver.version>
+        <mysql.version>5.1.47</mysql.version>
     </properties>
 
     <dependencies>
-        <!--web 依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
 
+        <!--启用不严格检查html-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+        <!--添加postgres依赖 -->
+<!--        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.driver.version}</version>
+        </dependency>-->
+        <!--添加MySQL驱动依赖 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+            <scope>runtime</scope>
         </dependency>
-
-        <!--ureport 依赖-->
         <dependency>
-            <groupId>com.pig4cloud.plugin</groupId>
-            <artifactId>ureport-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
+            <groupId>com.bstek.ureport</groupId>
+            <artifactId>ureport2-console</artifactId>
+            <version>2.3.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <version>2.1.0.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>1.18.24</version>
         </dependency>
+
 
     </dependencies>
 
@@ -66,8 +80,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -77,5 +91,12 @@
             </plugin>
         </plugins>
     </build>
+    <!-- 告诉Maven该到这里去下载snapshot版本的包 -->
+    <repositories>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
 
 </project>
