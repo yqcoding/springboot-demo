@@ -8,6 +8,9 @@
     <version>1.0</version>
     <name>springboot-demo</name>
     <description>springboot相关代码</description>
+    <modules>
+        <module>demo-leetcode</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
